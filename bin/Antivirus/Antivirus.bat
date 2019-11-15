@@ -23,19 +23,26 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Do
 @Echo		[2] Bitdefender Antivirus Free [x64]
 @Echo		[3] Kaspersky Free [x64]
 @Echo		[4] Avira Free Antivirus
-@Echo		[5] AVG Internet Security Free Antivirus
-@Echo		[6] Exit Menu
+@Echo		[5] AVG Free Antivirus
+@Echo.
+@Echo         [6] Main Menu
+@Echo.		
 @Echo.
 @Echo.
 choice /C:123456 /N /M "Please Enter Your Choice [1-2-3-4-5-6]: "
-if errorlevel 6 goto :Exit
+if errorlevel 7 goto :Exit
+if errorlevel 6 goto :toplevel
 if errorlevel 5 goto :INSPAN
 if errorlevel 4 goto :INSAVI
 if errorlevel 3 goto :INSKAS
 if errorlevel 2 goto :INSBITDEF
 if errorlevel 1 goto :INSAVAST
 
-
+::===============================================================================================================
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
+::===============================================================================================================
 
 :INSAVAST
 @cls
@@ -179,12 +186,12 @@ goto :HOME
 Echo.
 Echo.
 @Echo ===========================================================
-@Echo 	        Downloading AVG Internet Security Free Antivirus
+@Echo 	        Downloading AVG Free Antivirus
 @Echo ===========================================================
 @Echo.
 @Echo. 
 @Echo. 
-@.\wget -q --show-progress "https://bits.avcdn.net/productfamily_ANTIVIRUS/insttype_IS/platform_WIN_AVG/installertype_FULL/build_RELEASE/cookie_mmm_isc_003_999_a3f_m" -O "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Download\AVG Internet Security Free Antivirus.exe"
+@.\wget -q --show-progress "http://tiny.cc/avgdownload" -O "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Download\AVG Free Antivirus.exe"
 @cls
 Echo.
 Echo.
@@ -203,8 +210,8 @@ Echo.
 choice /C:1234 /N /M "Please Enter Your Choice [1-2-3-4]: "
 if errorlevel 4  exit 
 if errorlevel 3  goto :HOME 
-if errorlevel 2 explorer.exe /select,"%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Download\AVG Internet Security Free Antivirus.exe" & goto :HOME
-if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Download\AVG Internet Security Free Antivirus.exe" & goto :HOME
+if errorlevel 2 explorer.exe /select,"%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Download\AVG Free Antivirus.exe" & goto :HOME
+if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Antivirus_Download\AVG Free Antivirus.exe" & goto :HOME
 goto :HOME
 ::===============================================================================================================
 :Exit

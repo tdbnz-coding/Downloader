@@ -21,15 +21,19 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Burning_Ware
 @Echo.
 @Echo		[1] Power ISO x64
 @Echo		[2] UltraISO
-@Echo		[3] Exit Menu
+
+@Echo		 [3] Main Menu
 @Echo.
 @Echo.
 choice /C:123 /N /M "Please Enter Your Choice [1-2-3]: "
-if errorlevel 3 goto :Exit
+if errorlevel 3 goto :toplevel
 if errorlevel 2 goto :INSTGC
 if errorlevel 1 goto :INSTFF
 
 
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
 
 :INSTFF
 @cls
@@ -97,13 +101,7 @@ if errorlevel 2 explorer.exe /select,"%homedrive%\Users\%username%\Desktop\tdbnz
 if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Burning_Warez\UltraISO.exe & goto :HOME
 goto :HOME 
 
-:Exit
-echo.
-echo MSGBOX "Thanks For using my Downloader",0+64,"EXIT" > %temp%\TEMPmessage.vbs
-call %temp%\TEMPmessage.vbs
-del %temp%\TEMPmessage.vbs /f /q
-ENDLOCAL
-exit
+
 ::===============================================================================================================
 :KMSSuite
 cd..

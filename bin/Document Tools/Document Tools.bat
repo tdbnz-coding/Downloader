@@ -21,15 +21,18 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Document_Too
 @Echo.
 @Echo		[1] Notepad ++
 @Echo		[2] Adobe Acrobat Reader
-@Echo		[3] Exit Menu
+@Echo.		
+@Echo         [3] Exit Menu
 @Echo.
 @Echo.
 choice /C:123 /N /M "Please Enter Your Choice [1-2-3]: "
-if errorlevel 3 goto :Exit
+if errorlevel 3 goto :toplevel
 if errorlevel 2 goto :INSADO
 if errorlevel 1 goto :INSNOT
 
-
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
 
 :INSNOT
 @cls
@@ -97,13 +100,6 @@ if errorlevel 2 explorer.exe /select,"%homedrive%\Users\%username%\Desktop\tdbnz
 if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Document_Tools\Adobe Acrobat Reader.exe" & goto :HOME
 goto :HOME 
 
-:Exit
-echo.
-echo MSGBOX "Thanks For using my Downloader",0+64,"EXIT" > %temp%\TEMPmessage.vbs
-call %temp%\TEMPmessage.vbs
-del %temp%\TEMPmessage.vbs /f /q
-ENDLOCAL
-exit
 
 
 

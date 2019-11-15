@@ -25,11 +25,12 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Browser_Down
 @Echo		[4] Maxthon Browser
 @Echo		[5] UC Browser
 @Echo         [6] Brave Browser
-@Echo		[7] Exit Menu
+@Echo.		
+@Echo         [7] Main Menu
 @Echo.
 @Echo.
 choice /C:1234567 /N /M "Please Enter Your Choice [1-2-3-4-5-6-7]: "
-if errorlevel 7 goto :Exit
+if errorlevel 7 goto :toplevel
 if errorlevel 6 goto :INSTBRAVE
 if errorlevel 5 goto :INSTUC
 if errorlevel 4 goto :INSTMX
@@ -37,7 +38,9 @@ if errorlevel 3 goto :INSTOP
 if errorlevel 2 goto :INSTGC
 if errorlevel 1 goto :INSTFF
 
-
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
 
 :INSTFF
 @cls
@@ -241,12 +244,6 @@ if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Browser_D
 goto :HOME 
 
 
-:Exit
-echo.
-echo MSGBOX "Thanks For using my Downloader",0+64,"EXIT" > %temp%\TEMPmessage.vbs
-call %temp%\TEMPmessage.vbs
-del %temp%\TEMPmessage.vbs /f /q
-ENDLOCAL
-exit
+
 
 

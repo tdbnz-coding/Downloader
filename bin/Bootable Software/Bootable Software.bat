@@ -21,15 +21,18 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Bootable_Sof
 @Echo.
 @Echo		[1] Rufus
 @Echo		[2] WinToUSB
-@Echo		[3] Exit Menu
+@Echo.		
+@echo         [3] Main Menu
 @Echo.
 @Echo.
 choice /C:123 /N /M "Please Enter Your Choice [1-2-3]: "
-if errorlevel 3 goto :Exit
+if errorlevel 3 goto :toplevel
 if errorlevel 2 goto :INSTGC
 if errorlevel 1 goto :INSTFF
 
-
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
 
 :INSTFF
 @cls

@@ -26,11 +26,12 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Players_DOWN
 @Echo		[5] VLC Media Player X86
 @Echo         [6] Kodi Media Player x64
 @Echo         [7] Kodi Media Player x86
-@Echo		[8] Exit Menu
+@echo.
+@Echo		[8] Main Menu
 @Echo.
 @Echo.
 choice /C:12345678 /N /M "Please Enter Your Choice [1-2-3-4-5-6-7-8]: "
-if errorlevel 8 goto :Exit
+if errorlevel 8 goto :toplevel
 if errorlevel 7 goto :kodi32
 if errorlevel 6 goto :kodi64
 if errorlevel 5 goto :INSVLCC
@@ -39,7 +40,9 @@ if errorlevel 3 goto :INSGOM
 if errorlevel 2 goto :INSPOTT
 if errorlevel 1 goto :INSPOT
 
-
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
 
 :INSPOT
 @cls
@@ -273,10 +276,4 @@ if errorlevel 2 explorer.exe /select,"%homedrive%\Users\%username%\Desktop\tdbnz
 if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Players_Download\VLC Media Player x86.exe" & goto :HOME
 goto :HOME 
 
-:Exit
-echo.
-echo MSGBOX "Thanks For using my Downloader",0+64,"EXIT" > %temp%\TEMPmessage.vbs
-call %temp%\TEMPmessage.vbs
-del %temp%\TEMPmessage.vbs /f /q
-ENDLOCAL
-exit
+

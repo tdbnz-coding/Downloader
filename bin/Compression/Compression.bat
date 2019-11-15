@@ -23,16 +23,20 @@ if not exist "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Compression_
 @Echo		[2] WinRAR x86
 @Echo		[3] 7-Zip x64
 @Echo		[4] 7-Zip x86
-@Echo		[5] Exit Menu
+@echo.
+@Echo		[5] Main Menu
 @Echo.
 @Echo.
 choice /C:12345 /N /M "Please Enter Your Choice [1-2-3-4-5]: "
-if errorlevel 5 goto :Exit
+if errorlevel 5 goto :toplevel
 if errorlevel 4 goto :INS7ZI
 if errorlevel 3 goto :INS7Z
 if errorlevel 2 goto :INSWINR
 if errorlevel 1 goto :INSWIN
 
+:toplevel
+cls
+call "%~dp0bin\main/main.bat"
 
 
 :INSWIN
@@ -167,13 +171,6 @@ if errorlevel 2 explorer.exe /select,"%homedrive%\Users\%username%\Desktop\tdbnz
 if errorlevel 1 "%homedrive%\Users\%username%\Desktop\tdbnz Downloader\Compression_Download\7-Zip x86.exe" & goto :HOME
 goto :HOME 
 
-:Exit
-echo.
-echo MSGBOX "Thanks For using my Downloader",0+64,"EXIT" > %temp%\TEMPmessage.vbs
-call %temp%\TEMPmessage.vbs
-del %temp%\TEMPmessage.vbs /f /q
-ENDLOCAL
-exit
 
 
 
